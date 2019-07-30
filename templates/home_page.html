@@ -10,4 +10,11 @@
         </div>
     </div>
 </div>
+{% if request.user.is_authenticated %}
+<div class="row">
+    <div class="col">
+        {{ login }}
+    </div>
+</div>
+{% endif %}
 {% endblock %}
