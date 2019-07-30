@@ -1,7 +1,12 @@
 {% extends 'base.html' %} 
+{% load static from staticfiles %}
 {% block content %}
 <p>products page</p>
 {% for obj in qs %}
 {{ obj.title }}<br>
+
+<img src="/media/{{ obj.image }}" class="img-fluid"><br>
+
+{{ obj.image }}
 {% endfor %}
 {% endblock %}

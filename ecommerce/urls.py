@@ -17,6 +17,9 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from .views import home_page, about_page, contact_page, login_page, register_page
 from products.views import product_list, product_detail
+from django.views.static import serve
+from .settings import MEDIA_ROOT
+
 
 urlpatterns = [
     url(r'^$', home_page),
@@ -26,5 +29,6 @@ urlpatterns = [
     url(r'^register/$', register_page),
     url(r'^products/$', product_list),
     url(r'^products/(?P<pk>\d+)/$', product_detail),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     url(r'^admin/', admin.site.urls),
 ]
