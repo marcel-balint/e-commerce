@@ -1,0 +1,7 @@
+{% extends 'base.html' %} 
+{% block content %}
+<p>products page</p>
+{% for obj in qs %}
+{{ obj.title }}<br>
+{% endfor %}
+{% endblock %}
