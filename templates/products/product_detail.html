@@ -1,7 +1,8 @@
 {% extends 'base.html' %} 
 {% block content %}
-<p>detail page</p>
-{{ qs.title }}<br>
+<h1 class="text-center">detail page</h1>
+{{ qs.title }}
 {{ qs.description }}<br>
+<img src="/media/{{ qs.image }}" class="img-fluid"><br>
 {{ qs.price }}
 {% endblock %}
