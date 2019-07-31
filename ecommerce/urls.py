@@ -22,13 +22,13 @@ from .settings import MEDIA_ROOT
 
 
 urlpatterns = [
-    url(r'^$', home_page),
+    url(r'^$', home_page, name="home"),
     url(r'^about/$', about_page, name="about"),
-    url(r'^contact/$', contact_page),
-    url(r'^login/$', login_page),
-    url(r'^register/$', register_page),
-    url(r'^products/$', product_list),
-    url(r'^products/(?P<pk>\d+)/$', product_detail),
+    url(r'^contact/$', contact_page, name="contact"),
+    url(r'^login/$', login_page, name="login"),
+    url(r'^register/$', register_page, name="register"),
+    url(r'^products/$', product_list, name="products"),
+    url(r'^products/(?P<pk>\d+)/$', product_detail, name="product_detail"),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     url(r'^admin/', admin.site.urls),
 ]
