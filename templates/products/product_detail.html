@@ -1,8 +1,20 @@
-{% extends 'base.html' %} 
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1 class="text-center">detail page</h1>
-{{ qs.title }}
-{{ qs.description }}<br>
-<img src="/media/{{ qs.image }}" class="img-fluid"><br>
-{{ qs.price }}
+<div class="row">
+    <div class="col-12 col-md-6">
+        
+    
+    
+    {{ qs.title }} {{ qs.description }}<br>
+    <img src="/media/{{ qs.image }}" class="img-fluid"><br> {{ qs.price }}
+    <div class="col-12 col-md-6">
+        {{ cart }}
+        {% if object in cart.products.all %}
+        In  <button class="btn btn-link">Remove?</button>
+        {% else %}
+        Add to cart <button class="btn btn-success">Add to cart</button>
+        {% endif %}
+    </div>
+    </div>
+</div>
 {% endblock %}
