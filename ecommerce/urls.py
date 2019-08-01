@@ -18,6 +18,7 @@ from django.contrib import admin
 from .views import home_page, about_page, contact_page, login_page, register_page
 from products.views import product_list, product_detail
 from django.views.static import serve
+from cart.views import cart_home
 from .settings import MEDIA_ROOT
 
 
@@ -26,6 +27,7 @@ urlpatterns = [
     url(r'^about/$', about_page, name="about"),
     url(r'^contact/$', contact_page, name="contact"),
     url(r'^login/$', login_page, name="login"),
+    url(r'^cart/$', cart_home, name="cart"),
     url(r'^register/$', register_page, name="register"),
     url(r'^products/$', product_list, name="products"),
     url(r'^products/(?P<pk>\d+)/$', product_detail, name="product_detail"),
