@@ -22,7 +22,7 @@ def product_detail(request, pk):
     else:
         raise Http404("Product doesn't exist")
     context = {
-        "qs": instance
+        "object": instance
     }
     return render(request, "products/product_detail.html", context)    
     

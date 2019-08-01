@@ -5,15 +5,14 @@
         
     
     
-    {{ qs.title }} {{ qs.description }}<br>
-    <img src="/media/{{ qs.image }}" class="img-fluid"><br> {{ qs.price }}
+    {{ object.title }} {{ object.description }}<br>
+    {% if object.image %}
+      <img src="/media/{{ object.image }}" class='img-fluid'>
+    {% endif %}  
+    {{ object.price }}<br>
     <div class="col-12 col-md-6">
-        {{ cart }}
-        {% if object in cart.products.all %}
-        In  <button class="btn btn-link">Remove?</button>
-        {% else %}
-        Add to cart <button class="btn btn-success">Add to cart</button>
-        {% endif %}
+        {% include '../cart/update_cart.html' with product=object cart=cart %}
+        
     </div>
     </div>
 </div>
