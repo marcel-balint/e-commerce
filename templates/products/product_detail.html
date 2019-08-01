@@ -11,7 +11,8 @@
     {% endif %}  
     {{ object.price }}<br>
     <div class="col-12 col-md-6">
-        {% include '../cart/update_cart.html' with product=object cart=cart %}
+        {{ cart }}
+        {% include 'cart/update_cart.html' with product=object cart=cart %}
         
     </div>
     </div>
