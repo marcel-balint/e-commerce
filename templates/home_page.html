@@ -4,13 +4,11 @@
 <div class="text-center">
     <h4>{{ title }}</h4>
 </div>
-<div class="container">
     <div class="row">
         <div class="col">
            <img src="{% static 'img/rihanna.jpg' %}" width="300px" height="300px" class="img-fluid">
         </div>
     </div>
-</div>
 {% if request.user.is_authenticated %}
 <div class="row">
     <div class="col">

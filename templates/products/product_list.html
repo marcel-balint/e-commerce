@@ -2,7 +2,6 @@
 {% load static from staticfiles %} 
 {% block content %}
   <h1 class="text-center">products page</h1>
-  <div class="container">
     <div class="row">
     {% for obj in qs %}
     <div class="col">
@@ -10,5 +9,4 @@
     </div>
     {% endfor %} 
     </div>
-  </div>
 {% endblock %}
