@@ -1,9 +1,10 @@
 from __future__ import unicode_literals
+import math
 from django.db import models
 from cart.models import Cart
 from ecommerce.utils import unique_order_id_generator
 from django.db.models.signals import pre_save, post_save
-import math
+from billing.models import BillingProfile
 
 
 
@@ -16,12 +17,14 @@ ORDER_STATUS_CHICES = (
 )
 
 class Order(models.Model):
+    billing_profile = models.ForeignKey(BillingProfile, null=True, blank=True)
     order_id = models.CharField(max_length=100, blank=True)
     cart = models.ForeignKey(Cart)
     status = models.CharField(max_length=100, default="created", choices=ORDER_STATUS_CHICES)
     shipping_total = models.DecimalField(default=4.99, max_digits=100, decimal_places=2)
     total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
-
+    active = models.BooleanField(default=True)
+    
     def __str__(self):
         return self.order_id
         
