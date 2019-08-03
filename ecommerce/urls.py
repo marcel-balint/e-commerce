@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include  
 from django.contrib import admin
-from accounts.views import login_page, register_page
+from accounts.views import login_page, register_page, guest_register_view
 from .views import home_page, about_page, contact_page
 from products.views import product_list, product_detail
 from django.views.static import serve
@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^about/$', about_page, name="about"),
     url(r'^contact/$', contact_page, name="contact"),
     url(r'^login/$', login_page, name="login"),
+    url(r'^register/guest/$', guest_register_view, name="guest_register"),
     url(r'^logout/$', LogoutView.as_view(), name="logout"),
     url(r'^cart/', include("cart.urls", namespace="cart")),
     url(r'^register/$', register_page, name="register"),
