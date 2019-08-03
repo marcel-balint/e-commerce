@@ -13,9 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url, include  
 from django.contrib import admin
-from .views import home_page, about_page, contact_page, login_page, register_page
+from accounts.views import login_page, register_page
+from .views import home_page, about_page, contact_page
 from products.views import product_list, product_detail
 from django.views.static import serve
 from cart.views import cart_home
