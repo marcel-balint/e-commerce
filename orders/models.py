@@ -1,6 +1,9 @@
 from __future__ import unicode_literals
 from django.db import models
 from cart.models import Cart
+from ecommerce.utils import unique_order_id_generator
+from django.db.models.signals import pre_save
+
 
 
 #dropdown choices - db stored value on left and display value on right 
@@ -21,3 +24,8 @@ class Order(models.Model):
     def __str__(self):
         return self.order_id
 
+def pre_save_create_order_id(sender, instance , *args, **kwargs):
+    if not instance.order_id:
+        instance.order_id = unique_order_id_generator(instance)
+        
+pre_save.connect(pre_save_create_order_id, sender=Order)        
