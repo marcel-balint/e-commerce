@@ -16,10 +16,19 @@
 </div>
 
 {% else %}
-<h1>Checkout</h1>
-
-<p>Cart Total: {{ object.cart.total }}</p>
-<p>Shipping Total: {{ object.shipping_total }}</p>
-<p>Order Total: {{ object.total }}</p>
+   
+   {% if not object.shipping_address %}
+    {% else %}
+    
+    <h1>Checkout</h1>
+    <hr>
+    <p>Cart Items: {% for product in object.cart.products.all %}{{ product }}{% if not forloop.last %}, {% endif %} {% endfor %}</p>
+    <p>Cart Total: {{ object.cart.total }}</p>
+    <p>Shipping Total: {{ object.shipping_total }}</p>
+    <p>Order Total: {{ object.total }}</p>
+    <form class="form" method="POST" action="">{% csrf_token %}
+    <button class="btn btn-outline-success " type="submit">Checkout</button>
+    </form>
+    {% endif %}
 {% endif %}
 {% endblock %} 
