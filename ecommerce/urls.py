@@ -22,6 +22,7 @@ from django.views.static import serve
 from cart.views import cart_home
 from .settings import MEDIA_ROOT
 from django.contrib.auth.views import LogoutView
+from addresses.views import checkout_address_create_view
 
 
 urlpatterns = [
@@ -29,6 +30,7 @@ urlpatterns = [
     url(r'^about/$', about_page, name="about"),
     url(r'^contact/$', contact_page, name="contact"),
     url(r'^login/$', login_page, name="login"),
+    url(r'^checkout/address/create/$', checkout_address_create_view, name="checkout_address_create"),
     url(r'^register/guest/$', guest_register_view, name="guest_register"),
     url(r'^logout/$', LogoutView.as_view(), name="logout"),
     url(r'^cart/', include("cart.urls", namespace="cart")),
