@@ -68,7 +68,6 @@ def checkout_home(request):
         "guest_form": guest_form,
         "address_form": address_form,
     }
-    
     return render(request, 'cart/checkout.html', context)
 
 
