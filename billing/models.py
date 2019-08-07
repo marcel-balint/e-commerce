@@ -6,7 +6,7 @@ import stripe
 
 User = settings.AUTH_USER_MODEL
 
-stripe.api_key = settings.STRIPE_SECRET
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class BillingProfileManager(models.Manager):
@@ -44,6 +44,24 @@ class BillingProfile(models.Model):
     
     def charge(self, order_obj, card=None):
         return Charge.objects.do(self, order_obj, card)
+    
+    
+    def get_cards(self):
+        return self.card_set.all()
+        
+    #property of the model
+    @property
+    def has_card(self): # instance.has_card
+        card_qs = self.get_cards()
+        return card_qs.exists() # True or False 
+        
+        
+    @property
+    def default_card(self):
+        default_cards = self.get_cards().filter(default=True)
+        if default_cards.exists():
+            return default_cards.first()
+        return None    
 
     
 def billing_profile_created_receiver(sender, instance, *args, **kwargs):
@@ -66,9 +84,10 @@ post_save.connect(user_created_receiver, sender=User)
 
 
 class CardManager(models.Manager):
-    def add_new(self, billing_profile, stripe_card_response):
-        if str(stripe_card_response.object) == "card":
-            #Create the model
+    def add_new(self, billing_profile, token):
+        if token:
+            customer = stripe.Customer.retrieve(billing_profile.customer_id)
+            stripe_card_response = customer.sources.create(source=token)
             new_card = self.model(
                     billing_profile=billing_profile,
                     stripe_id = stripe_card_response.id,
@@ -81,7 +100,6 @@ class CardManager(models.Manager):
             new_card.save()
             return new_card
         return None
-
 
 class Card(models.Model):
     billing_profile = models.ForeignKey(BillingProfile)

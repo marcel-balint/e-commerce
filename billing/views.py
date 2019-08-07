@@ -5,8 +5,10 @@ from django.utils.http import is_safe_url
 from .models import BillingProfile, Card
 import stripe
 
-stripe.api_key = settings.STRIPE_SECRET
+STRIPE_SECRET_KEY = settings.STRIPE_SECRET_KEY
 STRIPE_PUB_KEY = settings.STRIPE_PUB_KEY
+
+stripe.api_key = STRIPE_SECRET_KEY
 
 
 def payment_method_view(request):

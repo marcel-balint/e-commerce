@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, redirect
 from .models import Cart
 from products.models import Product
@@ -7,6 +8,13 @@ from billing.models import BillingProfile
 from accounts.models import GuestEmail
 from addresses.forms import AddressForm
 from addresses.models import Address
+import stripe
+
+
+STRIPE_SECRET_KEY = settings.STRIPE_SECRET_KEY
+STRIPE_PUB_KEY = settings.STRIPE_PUB_KEY
+
+stripe.api_key = STRIPE_SECRET_KEY
 
 
 def cart_home(request):
@@ -35,14 +43,19 @@ def checkout_home(request):
     order_obj = None
     if cart_created or cart_obj.products.count() == 0:
         return redirect("cart:home")  
+    
     login_form = LoginForm()
     guest_form = GuestForm()
     address_form = AddressForm()
     billing_address_id = request.session.get("billing_address_id", None)
     shipping_address_id = request.session.get("shipping_address_id", None)
-    
+
     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+    address_qs = None
+    has_card = False
     if billing_profile is not None:
+        if request.user.is_authenticated():
+            address_qs = Address.objects.filter(billing_profile=billing_profile)
         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
         if shipping_address_id:
             order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
@@ -52,7 +65,8 @@ def checkout_home(request):
             del request.session["billing_address_id"]
         if billing_address_id or shipping_address_id:
             order_obj.save()
-    
+        has_card = billing_profile.has_card
+
     if request.method == "POST":
         "check that order is done"
         is_prepared = order_obj.check_done()
@@ -72,8 +86,11 @@ def checkout_home(request):
         "login_form": login_form,
         "guest_form": guest_form,
         "address_form": address_form,
+        "address_qs": address_qs,
+        "has_card": has_card,
+        "publish_key": STRIPE_PUB_KEY,
     }
-    return render(request, 'cart/checkout.html', context)
+    return render(request, "cart/checkout.html", context)
 
 
 def checkout_done_view(request):
