@@ -23,7 +23,7 @@ from cart.views import cart_home
 from .settings import MEDIA_ROOT
 from django.contrib.auth.views import LogoutView
 from addresses.views import checkout_address_create_view
-from billing.views import payment_method_view
+from billing.views import payment_method_view, payment_method_createview
 
 
 urlpatterns = [
@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^logout/$', LogoutView.as_view(), name="logout"),
     url(r'^cart/', include("cart.urls", namespace="cart")),
     url(r'^billing/payment-method/$', payment_method_view, name="billing-payment-method"),
+    url(r'^billing/payment-method/create/$', payment_method_createview, name='billing-payment-method-endpoint'),
     url(r'^register/$', register_page, name="register"),
     url(r'^products/$', product_list, name="products"),
     url(r'^products/(?P<pk>\d+)/$', product_detail, name="product_detail"),

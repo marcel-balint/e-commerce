@@ -8,6 +8,7 @@ from django.utils.http import is_safe_url
 from .models import GuestEmail
 
 
+
 def guest_register_view(request):
     form = GuestForm(request.POST or None)
     context = {
