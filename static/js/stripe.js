@@ -1,4 +1,6 @@
-/*STRIPE JAVASCRIPT*/
+/*STRIPE JavaScript taken from Stripe docs and modified 
+  according to my plans  */
+                
 
 
 $(document).ready(function() {
@@ -113,14 +115,14 @@ $(document).ready(function() {
                     var succesMsg = data.message || "Success! Your card was added."
                     card.clear()
                     if (nextUrl) {
-                        succesMsg = succesMsg + "<br/><br/><i class='fa fa-spin fa-spinner'></i> Redirecting..."
+                        succesMsg = succesMsg + "<br>" + " Redirecting..."
                     }
                     if ($.alert) {
                         $.alert(succesMsg)
                     }
-                    else {
+                   else {
                         alert(succesMsg)
-                    }
+                    }  
                     redirectToNext(nextUrl, 1500)
 
                 },
