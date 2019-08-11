@@ -106,6 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -135,3 +136,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STRIPE_PUB_KEY = os.getenv('STRIPE_PUB_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+

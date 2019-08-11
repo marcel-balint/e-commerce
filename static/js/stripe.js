@@ -2,7 +2,6 @@
   according to my plans  */
                 
 
-
 $(document).ready(function() {
 
     var stripeFormModule = $(".stripe-payment-form")
@@ -132,5 +131,5 @@ $(document).ready(function() {
             })
         }
     }
-
+ 
 })
