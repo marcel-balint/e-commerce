@@ -1,11 +1,9 @@
 <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
  <a href="{{ obj.id }}">
-  <div class="test">
-  <img class="product" src="/media/{{ obj.image }}" class="card-img-top" alt="...">
-  </div>
+  <img class="product" src="/media/{{ obj.image }}" class="card-img-top" alt="{{ obj.title }}">
  </a>
- <a href="{{ obj.id }}">
+ <a href="{{ obj.id }}" class="product-title-link">
   <p class="product-title">{{ obj.title }}</p>
  </a>
- <p class="product-price">{{ obj.price }}</p>
+ <p class="product-price"><i class="fa fa-usd" aria-hidden="true"></i>{{ obj.price }}</p>
 </div>

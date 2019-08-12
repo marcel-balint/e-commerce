@@ -1,16 +1,18 @@
 {% extends 'base.html' %} {% block content %}
-<h1 class="text-center">detail page</h1>
-<div class="row">
-    <div class="col-12 col-md-6">
-    {{ object.title }} {{ object.description }}<br>
+<div class="row description-row">
+    <div class="col-sm-6">
     {% if object.image %}
-      <img src="/media/{{ object.image }}" class='img-fluid'>
+    <div class="detail">
+      <img src="/media/{{ object.image }}" class='img-fluid img-detail'>
+    </div>  
     {% endif %}  
-    {{ object.price }}<br>
     </div>
-    <div class="col-12 col-md-6">
-    {% include 'cart/update_cart.html' with product=object cart=cart %}   
-    
+    <div class="col-sm-6">
+      <h1 class="product-description-name">{{ object.title }}</h1><br>
+      <h2 class="product-description-price"><i class="fa fa-usd" aria-hidden="true"></i>{{ object.price }}</h2><br>
+      {% include 'cart/update_cart.html' with product=object cart=cart %}  
+      <p class="product-details"><strong>Details</strong></p>
+      <p>{{ object.description }}</p>
     </div>
 </div>
 {% endblock %}
