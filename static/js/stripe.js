@@ -36,8 +36,6 @@ $(document).ready(function() {
         // Create an instance of Elements
         var elements = stripe.elements();
 
-        // Custom styling can be passed to options when creating an Element.
-        // (Note that this demo uses a wider set of styles than the guide below.)
         var style = {
             base: {
                 color: '#32325d',
@@ -92,7 +90,6 @@ $(document).ready(function() {
 
 
         function redirectToNext(nextPath, timeoffset) {
-            // body...
             if (nextPath) {
                 setTimeout(function() {
                     window.location.href = nextPath
@@ -101,7 +98,6 @@ $(document).ready(function() {
         }
 
         function stripeTokenHandler(nextUrl, token) {
-            // console.log(token.id)
             var paymentMethodEndpoint = '/billing/payment-method/create/'
             var data = {
                 'token': token.id

@@ -1,8 +1,10 @@
-body{
-    color: red;
+body {
+  font-family: Arial;
+  padding-top: 30px;
 }
 
 /*-----------Stripe-------------*/
+
 .StripeElement {
   background-color: white;
   padding: 8px 12px;
@@ -25,3 +27,33 @@ body{
   background-color: #fefde5 !important;
 }
 
+/*----------------products page--------*/
+
+.product {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.row.row-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.panel-default {
+  border-color: transparent;
+  padding: 0 10px 20px 10px;
+}
+
+.product-title {
+  text-align: center;
+  min-height: 40px;
+}
+
+.product-price {
+  text-align: center;
+}

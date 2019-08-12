@@ -2,11 +2,9 @@
 {% load static from staticfiles %} 
 {% block content %}
   <h1 class="text-center">products page</h1>
-    <div class="row">
+    <div class="row row-flex">
     {% for obj in qs %}
-    <div class="col">
        {% include 'card.html' %}
-    </div>
     {% endfor %} 
     </div>
 {% endblock %}

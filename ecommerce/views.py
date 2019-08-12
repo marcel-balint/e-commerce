@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, get_user_model
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 
@@ -23,13 +23,15 @@ def about_page(request):
     
     
 def contact_page(request):
-    contact_form = ContactForm(request.POST or None)
+    form = ContactForm(request.POST)
+    if request.method == 'POST': 
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form = ContactForm()
     context = {
         "title": "Contact page",
         "content": "This will be the content of contact",
-        "form": contact_form,
+        "form": form,
     }
-    if contact_form.is_valid():
-        print(contact_form.cleaned_data)
     return render(request, "contact_page.html", context)    
     

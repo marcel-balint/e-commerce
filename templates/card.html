@@ -1,12 +1,11 @@
-<div class="card" style="width: 18rem;">
-    {% if obj.image %}
-    <a href="{{ obj.id }}">
-    <img src="/media/{{ obj.image }}" class="card-img-top" alt="...">
-    </a>
-    {% endif %}
-    <div class="card-body">
-        <h5 class="card-title">{{ obj.title }}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="{{ obj.id }}" class="btn btn-primary">View</a>
-    </div>
+<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
+ <a href="{{ obj.id }}">
+  <div class="test">
+  <img class="product" src="/media/{{ obj.image }}" class="card-img-top" alt="...">
+  </div>
+ </a>
+ <a href="{{ obj.id }}">
+  <p class="product-title">{{ obj.title }}</p>
+ </a>
+ <p class="product-price">{{ obj.price }}</p>
 </div>
