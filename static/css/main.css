@@ -1,6 +1,5 @@
 body {
   font-family: Arial;
-  padding-top: 30px;
   background-color: lightgray;
   overflow-x: hidden;
 }
@@ -32,6 +31,23 @@ body {
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+/*----------------navbar------------*/
+
+.bg-light {
+    background-color: #f8f9fa!important;
+    height: 65px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #1c1c1e;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+  color: 	#C0C0C0;
 }
 
 /*----------------products page--------*/
