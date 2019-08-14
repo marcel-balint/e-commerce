@@ -1,8 +1,14 @@
 body {
   font-family: Arial;
   padding-top: 30px;
+  background-color: lightgray;
+  overflow-x: hidden;
 }
 
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
 /*-----------Stripe-------------*/
 
 .StripeElement {
@@ -107,8 +113,61 @@ body {
   padding: 2px 4px 2px 4px;
 }
 
+/*-----------footer-----------*/
 
-@media (max-width: 768px) {
+.container-fluid {
+  position: absolute;
+  bottom: 0;
+  padding-left: 0px;
+  padding-right: 0px;
+  
+}
+
+.footer-contact {
+  position: absolute;
+  bottom: 0;
+  top: 30px;
+  width: 100%;
+  height: 120px;
+  background-color: #e8e8e8;
+  display: flex;
+  border-top: 1px solid #000;
+}
+
+.footer-heading {
+  text-transform: uppercase;
+  margin: auto;
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+}
+
+.footer-heading a {
+  color: #000;
+}
+.footer-social {
+  margin: auto;
+  padding-top: 21px;
+}
+.footer-social a {
+  margin-right: 12px;
+  font-size: larger;
+}
+
+.footer-text {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: auto;
+  font-size: 17px;
+  color: #000;
+}
+@media (min-width: 768px) {
+  .h-line {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
 
   .product-description-name {
     text-align: center;
@@ -118,6 +177,28 @@ body {
   }
   .form-product-ajax {
     text-align: center;
+  }
+  .footer-contact{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+  }
+  .footer-heading {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .footer-social{
+    text-align: center;
+    padding-top: 0;
+    margin-left: 12px;
+  }
+  .footer-text {
+    display: none;
+  }
+  .h-line {
+    border: 1px solid #000;
+    margin: 10px 25% 10px 25%;
   }
 }
 
