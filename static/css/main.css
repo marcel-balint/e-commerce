@@ -53,6 +53,64 @@ body {
   color: #C0C0C0;
 }
 
+.home,
+.contact,
+.products,
+.logout,
+.login,
+.register {
+  border-bottom: 1px solid transparent;
+  transition: all .2s ease-in;
+}
+
+.register:hover {
+  border-bottom: 1px solid black;
+}
+
+.home:hover {
+  border-bottom: 1px solid black;
+}
+
+.contact:hover {
+  border-bottom: 1px solid black;
+}
+
+.products:hover {
+  border-bottom: 1px solid black;
+}
+
+.login:hover {
+  border-bottom: 1px solid black;
+}
+
+.logout:hover {
+  border-bottom: 1px solid black;
+}
+
+.navbar-collapse {
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  z-index: 1;
+  text-align: center;
+}
+
+.navbar-light .navbar-toggler {
+  border-color: inherit !important;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+button:focus {
+  outline: none;
+}
+
 /*----------------home page-------------*/
 
 #body {
