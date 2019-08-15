@@ -70,8 +70,7 @@ body {
 .home-text {
   position: absolute;
   z-index: 1;
-  border: 2px solid red;
-  top: 60%;
+  top: 30%;
   left: 5%;
   width: 20%;
   text-align: left;
@@ -96,6 +95,27 @@ body {
   font-weight: 700;
   letter-spacing: .018em;
   display: inline-block;
+  margin-bottom: 10px;
+}
+
+.button {
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  border-color: #3a3a3e;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.right {
+  padding-left: 5px;
+}
+
+.button:hover {
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
 }
 
 /*----------------products page--------*/
@@ -295,6 +315,19 @@ body {
   .h-line {
     border: 1px solid #000;
     margin: 10px 25% 10px 25%;
+  }
+  .para {
+    font-size: small;
+  }
+  .header {
+    font-size: 20px;
+  }
+  .home-text {
+    width: 150px;
+  }
+  .button {
+    padding: 9px;
+    font-size: 12px;
   }
 }
 
