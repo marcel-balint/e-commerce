@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .forms import ContactForm
+from django.contrib import messages
 
 
 def home_page(request):
@@ -23,15 +24,15 @@ def about_page(request):
     
     
 def contact_page(request):
-    form = ContactForm(request.POST)
     if request.method == 'POST': 
         form = ContactForm(request.POST)
         if form.is_valid():
+            messages.success(request, 'Your message is successfully sent!')
             form = ContactForm()
+    else:
+        form = ContactForm()
     context = {
-        "title": "Contact page",
-        "content": "This will be the content of contact",
+        "title": "Contact us",
         "form": form,
-    }
+    }    
     return render(request, "contact_page.html", context)    
-    
