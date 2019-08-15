@@ -1,19 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="text-center">
-    <h4>{{ title }}</h4>
-</div>
-    <div class="row">
-        <div class="col">
-           <img src="{% static 'img/rihanna.jpg' %}" width="300px" height="300px" class="img-fluid">
-        </div>
-    </div>
-{% if request.user.is_authenticated %}
-<div class="row">
-    <div class="col">
-        {{ login }}
+<div id="body" class="img-fluid">
+    <div class="home-text">
+        <p class="para">In stock now</p>
+        <h1 class="header">Summer essentials.</h1>
     </div>
 </div>
-{% endif %}
+
 {% endblock %}
