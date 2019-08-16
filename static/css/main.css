@@ -176,6 +176,43 @@ button:focus {
   text-decoration: none;
 }
 
+/*--------------login page--------------*/
+
+#id_username,
+#id_password {
+  background-color: transparent;
+}
+
+#login-submit {
+  background-color: #7096a7;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+}
+
+#login-submit:hover {
+  background-color: #79abc1;
+}
+
+.login-form {
+  margin-top: 5%;
+  background: rgba(173, 173, 173, 0.5);
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.login-header {
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-top: 10%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.register-link:hover {
+  text-decoration: none;
+}
+
 /*-----------------contact page-----------*/
 
 .contact-form {
@@ -215,6 +252,7 @@ button:focus {
 #btn-contact:hover {
   background-color: #79abc1;
 }
+
 .contact-title {
   font-size: 17px;
   text-transform: uppercase;
