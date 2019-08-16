@@ -12,6 +12,39 @@ body {
 
 /*-----------Stripe-------------*/
 
+#card-element {
+  background: #fff;
+  border-bottom: none;
+  -webkit-box-shadow: 1px 1px 25px -2px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 1px 1px 25px -2px rgba(0, 0, 0, 0.7);
+  box-shadow: 1px 1px 25px -2px rgba(0, 0, 0, 0.7);
+}
+
+#card-errors {
+  color: #ff0000;
+}
+
+.payment-card {
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-top: 10%;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #7096a7;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+}
+
+.btn-primary:hover {
+  background-color: #79abc1;
+}
+
 .StripeElement {
   background-color: white;
   padding: 8px 12px;
@@ -32,6 +65,11 @@ body {
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+.stripe-payment-form {
+  max-width: 550px;
+  margin: 130px auto;
 }
 
 /*----------------navbar------------*/

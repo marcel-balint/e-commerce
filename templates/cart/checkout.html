@@ -43,7 +43,8 @@
             <!-- If the user does't have a saved card -->
             {% if not has_card %}
                  <!-- Show credit card -->
-                <div class='stripe-payment-form' data-token='{{ publish_key }}' data-next-url='{{ request.build_absolute_uri }}' data-btn-title='Add Payment Method'></div>
+                <h2 class="payment-card">Add a payment card</h2> 
+                <div class='stripe-payment-form' data-token='{{ publish_key }}' data-next-url='{{ request.build_absolute_uri }}' data-btn-title='Add Payment Card'></div>
             {% else %}    
     
                 <h1>Finalize Checkout</h1>
