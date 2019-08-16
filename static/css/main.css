@@ -394,6 +394,35 @@ ul {
   padding: 2px 4px 2px 4px;
 }
 
+/*-----------checkout forms------*/
+
+.checkout-forms {
+  margin-top: 5%;
+  background: rgba(173, 173, 173, 0.5);
+  padding: 30px;
+  border-radius: 5px;
+}
+
+#checkout-forms-button {
+  background-color: #7096a7;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+}
+
+#checkout-forms-button:hover {
+  background-color: #79abc1;
+}
+
+#checkout-forms-header-login,
+#checkout-forms-header-email {
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-top: 10%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 /*-----------footer-----------*/
 
 .container-fluid {

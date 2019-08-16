@@ -1,7 +1,8 @@
-<form method='POST' action='{% if action_url %}{{ action_url }}{% else %}{% url "login" %}{% endif %}'> {% csrf_token %}
+{% load crispy_forms_tags %}
+<form method='POST' class="checkout-forms" action='{% if action_url %}{{ action_url }}{% else %}{% url "login" %}{% endif %}'> {% csrf_token %}
     {% if next_url %}
     <input type='hidden' name='next' value='{{ next_url }}' />
     {% endif %}
-   {{ form }}
-  <button type='submit' class='btn btn-outline-success'>Submit</button>
+   {{ form|crispy }}
+  <button type='submit' id="checkout-forms-button" class='btn btn-outline-success'>Submit</button>
 </form>
