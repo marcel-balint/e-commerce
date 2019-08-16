@@ -47,17 +47,18 @@
                 <div class='stripe-payment-form' data-token='{{ publish_key }}' data-next-url='{{ request.build_absolute_uri }}' data-btn-title='Add Payment Card'></div>
             {% else %}    
     
-                <h1>Finalize Checkout</h1>
+                <h1 class="finalize-checkout">Finalize Checkout</h1>
                 
-                <p>Cart Items: {% for product in object.cart.products.all %}{{ product }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                <p>Shipping Address: {{ object.shipping_address.get_address }}</p>
-                <p>Billing Address: {{ object.shipping_address.get_address }}</p>
-                <p>Payment Method: {{ billing_profile.default_card }} (<a href="{{ billing_profile.get_payment_method_url }}?next={{ request.build_absolute_uri }}">Change</a>)</p>
-                <p>Cart Total: {{ object.cart.total }}</p>
-                <p>Shipping Total: {{ object.shipping_total }}</p>
-                <p>Order Total: {{ object.total }}</p>
-                <form class='form' method='POST' action="">{% csrf_token %}
-                    <button type='submit'>Checkout</button>
+                <p><span class="item-sum">Cart Items:</span> {% for product in object.cart.products.all %}{{ product }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                <p><span class="item-sum">Shipping Address:</span> {{ object.shipping_address.get_address }}</p>
+                <p><span class="item-sum">Billing Address:</span> {{ object.shipping_address.get_address }}</p>
+                <p><span class="item-sum">Payment Method:</span> {{ billing_profile.default_card }} (<a href="{{ billing_profile.get_payment_method_url }}?next={{ request.build_absolute_uri }}" class="change-card">Change</a>)</p>
+                <hr class="hr-checkout">
+                <p class="cart"><span class="cart">Cart Total: <i class="fa fa-usd" aria-hidden="true"></i>{{ object.cart.total }}</p>
+                <p class="cart-shipping">Shipping Total: <i class="fa fa-usd" aria-hidden="true"></i>{{ object.shipping_total }}</p>
+                <p class="cart-total">Order Total: <i class="fa fa-usd" aria-hidden="true"></i>{{ object.total }}</p>
+                <form class='form text-center' method='POST' action="">{% csrf_token %}
+                    <button type='submit' class="checkout-button">Checkout</button>
                 </form>
                 {% endif %}
         {% endif %}
