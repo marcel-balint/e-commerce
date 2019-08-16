@@ -1,11 +1,11 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% load crispy_forms_tags %} {% block content %}
 <div class='text-center'>
     <h1 class="contact-title">{{ title }}</h1>
 </div>
 <div id="container-contact" class='container'>
     <div class='row'>
         <div class='col-md-6 col-12 mx-auto' id="contact-col">
-            <form class='contact-form' method='POST' action='{% url "contact" %}'> {% csrf_token %} {{ form.as_p }}
+            <form class='contact-form' method='POST' action='{% url "contact" %}'> {% csrf_token %} {{ form|crispy }}
                 <button type='submit' id="btn-contact" class='btn btn-default'>Submit</button>
             </form>
         </div>
