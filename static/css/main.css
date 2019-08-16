@@ -423,6 +423,49 @@ ul {
   text-align: center;
 }
 
+/*-------------shipping/billing address------------*/
+
+#id_address_line_1,
+#id_address_line_2,
+#id_city,
+#id_country,
+#id_state,
+#id_postal_code {
+  background-color: transparent;
+}
+
+#shipping-submit {
+  background-color: #7096a7;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+}
+
+#shipping-submit:hover {
+  background-color: #79abc1;
+}
+
+.hr-shipping,
+.hr-billing {
+  border-top: 2px solid #000;
+}
+
+.shipping-form {
+  margin-top: 5%;
+  background: rgba(173, 173, 173, 0.5);
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.shipping-header,
+.billing-header {
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-top: 10%;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 /*-----------footer-----------*/
 
 .container-fluid {
