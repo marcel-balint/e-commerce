@@ -1,6 +1,6 @@
 body {
   font-family: Arial;
-  background-color: lightgray;
+  background-color: #F0F0F0;
   overflow-x: hidden;
   height: 100%;
 }
@@ -75,7 +75,7 @@ body {
 /*----------------navbar------------*/
 
 .bg-light {
-  background-color: #f8f9fa!important;
+  background-color: #e8e8e8 !important;
   height: 65px;
 }
 
@@ -132,7 +132,7 @@ body {
   flex-grow: 1;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #f8f9fa;
+  background-color: #e8e8e8;
   z-index: 1;
   text-align: center;
 }
@@ -152,7 +152,7 @@ button:focus {
 /*----------------home page-------------*/
 
 #body {
-  background: url("../img/t_shirt.jpg");
+  background: url("../img/shopping.jpeg");
   position: absolute;
   top: 0;
   left: 0;
@@ -162,6 +162,7 @@ button:focus {
   background-position: center;
   background-size: cover;
 }
+
 
 .home-text {
   position: absolute;
@@ -366,6 +367,13 @@ ul {
   margin: 0 auto;
 }
 
+.products-title {
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
 .row.row-flex {
   display: flex;
   flex-wrap: wrap;
@@ -398,6 +406,7 @@ ul {
   width: 100%;
 }
 
+
 /*---------product description--*/
 
 .img-detail {
@@ -424,12 +433,47 @@ ul {
   margin-top: 10px;
 }
 
+.add-to-cart {
+  background-color: #7096a7;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+}
+
+.add-to-cart:hover {
+  background-color: #79abc1;
+}
+
 .remove {
   text-transform: uppercase;
-  font-size: medium;
-  background-color: cornflowerblue;
+  font-size: small;
+  background-color: #FF0000;
   color: #fff;
   padding: 2px 4px 2px 4px;
+}
+
+.small-btn {
+  text-transform: uppercase;
+  background-color: #FF0000;
+  font-size: small;
+  padding: 0;
+  padding: 2px;
+}
+
+.small-btn:hover {
+  text-decoration: none;
+}
+
+.cart-title {
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.table {
+  background: rgba(173, 173, 173, 0.5);
 }
 
 /*-----------checkout forms------*/
@@ -522,7 +566,7 @@ ul {
 .change-card {
   text-transform: uppercase;
   font-size: 12px;
-  color: #000;
+  color: #FF0000;
 }
 
 .change-card:hover {
@@ -542,6 +586,7 @@ ul {
   font-size: 14px;
   border: 0;
   padding: 10px;
+  border-radius: 3px;
 }
 
 .checkout-button:hover {
@@ -569,6 +614,15 @@ ul {
 .thank-you {
   margin: 50% auto;
   animation: scale 2s 1;
+}
+
+.empty {
+  font-size: 17px;
+  text-transform: uppercase;
+  margin-top: 10%;
+  margin-bottom: 20px;
+  text-align: center;
+  background: rgba(173, 173, 173, 0.5);
 }
 
 @keyframes scale {
@@ -740,8 +794,6 @@ ul {
     margin-right: 15px;
   }
   .btn-success {
-    color: #fff;
-    background-color: #aeceff;
     padding: 2px 4px 2px 4px;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -751,5 +803,6 @@ ul {
     width: 300px;
     margin-left: auto;
     margin-right: auto;
+    padding-right: 10px;
   }
 }

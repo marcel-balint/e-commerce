@@ -20,7 +20,7 @@ $(document).ready(function() {
      submitSpan.html("In cart <button type='submit' class='btn remove'>Remove?</button>")
     }
     else {
-     submitSpan.html("<button type='submit'  class='btn btn-success'>Add to cart</button>")
+     submitSpan.html("<button type='submit'  class='btn btn-success add-to-cart'>Add to cart</button>")
     }
     var navbarCount = $(".navbar-cart-count")
     navbarCount.text(data.cartItemCount)

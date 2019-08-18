@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h3>Cart</h3>
+<h3 class="cart-title">Shopping Cart</h3>
 
 {% if cart.products.exists %}
 <table class="table">
@@ -18,7 +18,7 @@
       <td>{{ product.title }} 
       <form method='POST' action='{% url "cart:update" %}' class="form"> {% csrf_token %}
          <input type='hidden' name='product_id' value='{{ product.id }}' />
-        <button type="submit" class="btn btn-link btn-sm" style="padding: 0px; cursor: pointer;">Remove</button> 
+        <button type="submit" class='btn small-btn'>Remove</button> 
       </form>
       </td> 
       <td>{{ product.price }}</td>
@@ -39,7 +39,7 @@
   </tbody>
 </table>
 {% else %}
-<p class="lead">Cart is empty.</p>
+<p class="lead empty">Cart is empty.</p>
 {% endif %}
 
 {% endblock %}

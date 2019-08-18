@@ -1,12 +1,8 @@
 {% load crispy_forms_tags %}
-<form method='POST' class="shipping-form" action='{% if action_url %}{{ action_url }}{% else %}{% url "login" %}{% endif %}'> {% csrf_token %}
-    {% if next_url %}
-    <input type='hidden' name='next' value='{{ next_url }}' />
-    {% endif %}
-    
-    {% if address_type %}
-    <input type='hidden' name='address_type' value='{{ address_type }}' />
-    {% endif %}
-   {{ form|crispy }}
-  <button type='submit' id="shipping-submit" class='btn btn-outline-success'>Submit</button>
+<form method='POST' class="shipping-form" action='{% if action_url %}{{ action_url }}{% else %}{% url "login" %}{% endif %}'> {% csrf_token %} {% if next_url %}
+    <input type='hidden' name='next' value='{{ next_url }}' /> {% endif %} {% if address_type %}
+    <input type='hidden' name='address_type' value='{{ address_type }}' /> {% endif %} {{ form|crispy }}
+    <div class="text-center">
+        <button type='submit' id="shipping-submit" class='btn btn-outline-success'>Submit</button>
+    </div>
 </form>

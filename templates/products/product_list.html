@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static from staticfiles %} 
 {% block content %}
-  <h1 class="text-center">products page</h1>
+  <h1 class="text-center products-title">All T-shirts</h1>
     <div class="row row-flex list-products">
     {% for obj in qs %}
        {% include 'card.html' %}
