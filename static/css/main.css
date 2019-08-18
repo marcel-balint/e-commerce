@@ -552,6 +552,34 @@ ul {
 .hr-checkout {
   border: 1px solid #000;
 }
+
+.cart-checkout {
+  background-color: #7096a7;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+  border: 0;
+  padding: 10px;
+}
+
+.cart-checkout:hover {
+  background-color: #79abc1;
+}
+
+.thank-you {
+  margin: 50% auto;
+  animation: scale 2s 1;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /*-----------footer-----------*/
 
 .container-fluid {
