@@ -50,7 +50,7 @@ def login_page(request):
             else:    
                 return redirect("/")
         else:
-            print("Error")
+            form.add_error(None, "Incorrect Username or Password!")
 
     return render(request, "accounts/login.html", context)
     

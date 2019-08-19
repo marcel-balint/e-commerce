@@ -45,3 +45,11 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError("Username is taken.")
         return username        
     
+    
+    def clean_email(self):
+        #Check is there are duplicate email addresses
+        email = self.cleaned_data.get("email")
+        username = self.cleaned_data.get("username")
+        if User.objects.filter(email=email).exclude(username=username):
+            raise forms.ValidationError("Email addresses must be unique.")
+        return email
