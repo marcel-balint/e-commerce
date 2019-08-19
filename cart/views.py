@@ -25,7 +25,7 @@ def cart_home(request):
 
 def cart_update(request):
     product_id = request.POST.get('product_id')
-    
+
     if product_id is not None:
         try:
             product_obj = Product.objects.get(id=product_id)
@@ -36,10 +36,10 @@ def cart_update(request):
             cart_obj.products.remove(product_obj)
             added = False
         else:
-            cart_obj.products.add(product_obj) 
+            cart_obj.products.add(product_obj)
             added = True
         request.session['cart_items'] = cart_obj.products.count()
-        if request.is_ajax(): 
+        if request.is_ajax():
             print("Ajax request")
             json_data = {
                 "added": added,
@@ -54,33 +54,38 @@ def checkout_home(request):
     cart_obj, cart_created = Cart.objects.new_or_get(request)
     order_obj = None
     if cart_created or cart_obj.products.count() == 0:
-        return redirect("cart:home")  
-    
+        return redirect("cart:home")
+
     login_form = LoginForm()
     guest_form = GuestForm()
     address_form = AddressForm()
     billing_address_id = request.session.get("billing_address_id", None)
     shipping_address_id = request.session.get("shipping_address_id", None)
 
-    billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+    billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(
+        request)
     address_qs = None
     has_card = False
     if billing_profile is not None:
         if request.user.is_authenticated():
-            address_qs = Address.objects.filter(billing_profile=billing_profile)
-        order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
+            address_qs = Address.objects.filter(
+                billing_profile=billing_profile)
+        order_obj, order_obj_created = Order.objects.new_or_get(
+            billing_profile, cart_obj)
         if shipping_address_id:
-            order_obj.shipping_address = Address.objects.get(id=shipping_address_id)
+            order_obj.shipping_address = Address.objects.get(
+                id=shipping_address_id)
             del request.session["shipping_address_id"]
         if billing_address_id:
-            order_obj.billing_address = Address.objects.get(id=billing_address_id) 
+            order_obj.billing_address = Address.objects.get(
+                id=billing_address_id)
             del request.session["billing_address_id"]
         if billing_address_id or shipping_address_id:
             order_obj.save()
         has_card = billing_profile.has_card
 
     if request.method == "POST":
-        #check that order is done
+        # check that order is done
         is_prepared = order_obj.check_done()
         if is_prepared:
             did_charge, crg_msg = billing_profile.charge(order_obj)
