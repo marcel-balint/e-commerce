@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
+
 body {
   font-family: Arial;
   background-color: #F0F0F0;
@@ -79,6 +81,10 @@ body {
   height: 65px;
 }
 
+.navbar-brand {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+}
 
 .navbar-light .navbar-nav .nav-link {
   color: #1c1c1e;

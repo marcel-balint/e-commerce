@@ -4,32 +4,32 @@
 
 $(document).ready(function() {
 
-    var stripeFormModule = $(".stripe-payment-form")
-    var stripeModuleToken = stripeFormModule.attr("data-token")
-    var stripeModuleNextUrl = stripeFormModule.attr("data-next-url")
-    var stripeModuleBtnTitle = stripeFormModule.attr("data-btn-title") || "Add card"
+    var stripeFormModule = $(".stripe-payment-form");
+    var stripeModuleToken = stripeFormModule.attr("data-token");
+    var stripeModuleNextUrl = stripeFormModule.attr("data-next-url");
+    var stripeModuleBtnTitle = stripeFormModule.attr("data-btn-title") || "Add card";
 
-    var stripeTemplate = $.templates("#stripeTemplate")
+    var stripeTemplate = $.templates("#stripeTemplate");
     var stripeTemplateDataContext = {
         publishKey: stripeModuleToken,
         nextUrl: stripeModuleNextUrl,
         btnTitle: stripeModuleBtnTitle
-    }
-    var stripeTemplateHtml = stripeTemplate.render(stripeTemplateDataContext)
-    stripeFormModule.html(stripeTemplateHtml)
+    };
+    var stripeTemplateHtml = stripeTemplate.render(stripeTemplateDataContext);
+    stripeFormModule.html(stripeTemplateHtml);
 
 
     // https secure site when live
 
     var paymentForm = $(".payment-form")
     if (paymentForm.length > 1) {
-        alert("Only one payment form is allowed per page")
-        paymentForm.css('display', 'none')
+        alert("Only one payment form is allowed per page");
+        paymentForm.css('display', 'none');
     }
     else if (paymentForm.length == 1) {
 
-        var pubKey = paymentForm.attr('data-token')
-        var nextUrl = paymentForm.attr('data-next-url')
+        var pubKey = paymentForm.attr('data-token');
+        var nextUrl = paymentForm.attr('data-next-url');
         // Create a Stripe client
         var stripe = Stripe(pubKey);
 
@@ -92,39 +92,39 @@ $(document).ready(function() {
         function redirectToNext(nextPath, timeoffset) {
             if (nextPath) {
                 setTimeout(function() {
-                    window.location.href = nextPath
-                }, timeoffset)
+                    window.location.href = nextPath;
+                }, timeoffset);
             }
         }
 
         function stripeTokenHandler(nextUrl, token) {
-            var paymentMethodEndpoint = '/billing/payment-method/create/'
+            var paymentMethodEndpoint = '/billing/payment-method/create/';
             var data = {
                 'token': token.id
-            }
+            };
             $.ajax({
                 data: data,
                 url: paymentMethodEndpoint,
                 method: "POST",
                 success: function(data) {
-                    var succesMsg = data.message || "Success! Your card was added."
-                    card.clear()
+                    var succesMsg = data.message || "Success! Your card was added.";
+                    card.clear();
                     if (nextUrl) {
-                        succesMsg = succesMsg + "<br>" + " Redirecting..."
+                        succesMsg = succesMsg + "<br>" + " Redirecting...";
                     }
                     if ($.alert) {
                         $.alert(succesMsg)
                     }
                    else {
-                        alert(succesMsg)
+                        alert(succesMsg);
                     }  
-                    redirectToNext(nextUrl, 1500)
+                    redirectToNext(nextUrl, 1500);
 
                 },
                 error: function(error) {
-                    console.log(error)
+                    console.log(error);
                 }
-            })
+            });
         }
     }
  
