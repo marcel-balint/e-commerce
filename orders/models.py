@@ -8,7 +8,7 @@ from billing.models import BillingProfile
 from addresses.models import Address
 
 
-#dropdown choices - database stored value on left and display value on right 
+# dropdown choices - database stored value on left and display value on right
 ORDER_STATUS_CHICES = (
     ('created', 'Created'),
     ('paid', 'Paid'),
@@ -21,17 +21,17 @@ class OrderManager(models.Manager):
     def new_or_get(self, billing_profile, cart_obj):
         created = False
         qs = self.get_queryset().filter(
-                billing_profile=billing_profile, 
-                cart=cart_obj, 
-                active=True, 
-                status='created'
-                )
+            billing_profile=billing_profile,
+            cart=cart_obj,
+            active=True,
+            status='created'
+        )
         if qs.count() == 1:
             obj = qs.first()
         else:
             obj = self.model.objects.create(
-                    billing_profile=billing_profile, 
-                    cart=cart_obj)
+                billing_profile=billing_profile,
+                cart=cart_obj)
             created = True
         return obj, created
 
@@ -39,19 +39,28 @@ class OrderManager(models.Manager):
 class Order(models.Model):
     billing_profile = models.ForeignKey(BillingProfile, null=True, blank=True)
     order_id = models.CharField(max_length=100, blank=True)
-    shipping_address = models.ForeignKey(Address, related_name="shipping_address",null=True, blank=True)
-    billing_address = models.ForeignKey(Address, related_name="billing_address", null=True, blank=True)
+    shipping_address = models.ForeignKey(
+        Address, related_name="shipping_address", null=True, blank=True)
+    billing_address = models.ForeignKey(
+        Address,
+        related_name="billing_address",
+        null=True,
+        blank=True)
     cart = models.ForeignKey(Cart)
-    status = models.CharField(max_length=100, default="created", choices=ORDER_STATUS_CHICES)
-    shipping_total = models.DecimalField(default=4.99, max_digits=100, decimal_places=2)
+    status = models.CharField(
+        max_length=100,
+        default="created",
+        choices=ORDER_STATUS_CHICES)
+    shipping_total = models.DecimalField(
+        default=4.99, max_digits=100, decimal_places=2)
     total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
     active = models.BooleanField(default=True)
-    
+
     def __str__(self):
         return self.order_id
-        
-    objects = OrderManager()    
-        
+
+    objects = OrderManager()
+
     def update_total(self):
         cart_total = self.cart.total
         shipping_total = self.shipping_total
@@ -60,33 +69,37 @@ class Order(models.Model):
         self.total = formatted_total
         self.save()
         return new_total
-        
-        
+
     def check_done(self):
         billing_profile = self.billing_profile
         shipping_address = self.shipping_address
         billing_address = self.billing_address
-        total   = self.total
-        if billing_profile and shipping_address and billing_address and total > 0:
+        total = self.total
+        if (billing_profile and
+           shipping_address and
+           billing_address and
+           total > 0):
             return True
-        return False  
-        
-        
+        return False
+
     def mark_paid(self):
         if self.check_done():
             self.status = "paid"
             self.save()
-        return self.status    
+        return self.status
 
 
-def pre_save_create_order_id(sender, instance , *args, **kwargs):
+def pre_save_create_order_id(sender, instance, *args, **kwargs):
     if not instance.order_id:
         instance.order_id = unique_order_id_generator(instance)
-    qs = Order.objects.filter(cart=instance.cart).exclude(billing_profile=instance.billing_profile)
+    qs = Order.objects.filter(
+        cart=instance.cart).exclude(
+        billing_profile=instance.billing_profile)
     if qs.exists():
-        qs.update(active=False)    
-        
-pre_save.connect(pre_save_create_order_id, sender=Order)        
+        qs.update(active=False)
+
+
+pre_save.connect(pre_save_create_order_id, sender=Order)
 
 
 def post_save_cart_total(sender, instance, created, *args, **kwargs):
@@ -99,11 +112,13 @@ def post_save_cart_total(sender, instance, created, *args, **kwargs):
             order_obj = qs.first()
             order_obj.update_total()
 
-post_save.connect(post_save_cart_total, sender=Cart)    
+
+post_save.connect(post_save_cart_total, sender=Cart)
 
 
 def post_save_order(sender, instance, created, *args, **kwargs):
     if created:
         instance.update_total()
+
 
 post_save.connect(post_save_order, sender=Order)
