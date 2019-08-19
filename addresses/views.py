@@ -17,7 +17,8 @@ def checkout_address_create_view(request):
     if form.is_valid():
         print(request.POST)
         instance = form.save(commit=False)
-        billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
+        billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(
+            request)
         if billing_profile is not None:
             address_type = request.POST.get('address_type', 'shipping')
             instance.billing_profile = billing_profile
@@ -32,4 +33,4 @@ def checkout_address_create_view(request):
             return redirect(redirect_path)
         else:
             return redirect("cart:checkout")
-    return redirect("cart:checkout") 
+    return redirect("cart:checkout")

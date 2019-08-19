@@ -17,7 +17,7 @@ def guest_register_view(request):
     next_post = request.POST.get('next')
     redirect_path = next_ or next_post or None
     if form.is_valid():
-        email       = form.cleaned_data.get("email")
+        email = form.cleaned_data.get("email")
         new_guest_email = GuestEmail.objects.create(email=email)
         request.session['guest_email_id'] = new_guest_email.id
         if is_safe_url(redirect_path, request.get_host()):
@@ -36,26 +36,28 @@ def login_page(request):
     next_post = request.POST.get("next")
     redirect_path = next_ or next_post or None
     if form.is_valid():
-        username  = form.cleaned_data.get("username")
-        password  = form.cleaned_data.get("password")
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             try:
                 del request.session['guest_email_id']
-            except:
+            except BaseException:
                 pass
             if is_safe_url(redirect_path, request.get_host()):
                 return redirect(redirect_path)
-            else:    
+            else:
                 return redirect("/")
         else:
             form.add_error(None, "Incorrect Username or Password!")
 
     return render(request, "accounts/login.html", context)
-    
-    
-User = get_user_model()    
+
+
+User = get_user_model()
+
+
 def register_page(request):
     form = RegisterForm(request.POST or None)
     context = {
@@ -63,9 +65,9 @@ def register_page(request):
     }
     if form.is_valid():
         print(form.cleaned_data)
-        username  = form.cleaned_data.get("username")
-        email  = form.cleaned_data.get("email")
-        password  = form.cleaned_data.get("password")
+        username = form.cleaned_data.get("username")
+        email = form.cleaned_data.get("email")
+        password = form.cleaned_data.get("password")
         new_user = User.objects.create_user(username, email, password)
         return redirect('login')
-    return render(request, "accounts/register.html", context) 
+    return render(request, "accounts/register.html", context)

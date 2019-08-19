@@ -80,7 +80,7 @@ def checkout_home(request):
         has_card = billing_profile.has_card
 
     if request.method == "POST":
-        "check that order is done"
+        #check that order is done
         is_prepared = order_obj.check_done()
         if is_prepared:
             did_charge, crg_msg = billing_profile.charge(order_obj)
