@@ -736,7 +736,7 @@ ul {
 @media (max-width: 991.98px) {
   .navbar-expand-lg>.container,
   .navbar-expand-lg>.container-fluid {
-    padding-right: 15px;
+    padding-right: 0px;
     padding-left: 0;
   }
 }
