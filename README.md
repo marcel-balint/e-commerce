@@ -79,8 +79,8 @@ will cause an error if the username and password entered are not registered in t
 
 I also checked to see if the number next to the cart is updated when a product is added or removed. While testing the checkout process, 
 I made sure that a new customer who does not have a payment card attached to his account will have to add a card to complete the checkout process.
-The _change card_ functionality on the _finalize checkout_ page has been tested to make sure it is working correctly and redirects back as intended.
-
+The _change card_ functionality on the _finalize checkout_ page has been tested with different cards to make sure it is working correctly and redirects back as intended.
+The Stripe payment function has been verified with a test card and all transactions show up on the Stripe dashboard.
 
 All links and forms are verified to be working correctly via manual testing.
 
@@ -112,4 +112,74 @@ All links and forms are verified to be working correctly via manual testing.
   
 ###### Chrome's DevTools Audit Report
 
-![Audit Report]()
+![Audit Report](https://raw.githubusercontent.com/marcel-balint/e-commerce/master/testing/audit_report.PNG)
+
+## Deployment
+
+This project is deployed on heroku: https://the-shopper120.herokuapp.com
+
+#### Local Deployment
+
+Before you are able to deploy and run this application locally, you must have the following installed on your system:
+
+ * [Python 3](https://www.python.org/downloads/) - to run the application. 
+ * [PIP](https://pip.pypa.io/en/stable/installing/) - to install all app requirements.
+ * An IDE of your choice.
+ * [GIT](https://www.atlassian.com/git/tutorials/install-git) -  for cloning and version control.
+ 
+Next, perform the following steps:
+
+Clone this GitHub repository by either clicking the green Clone or download button and downloading the project as a zip-file, 
+or by entering the following into the Git CLI terminal: - `git clone https://github.com/marcel-balint/e-commerce.git`.
+
+* Navigate to the correct file location after unpacking the files: `cd <path to folder>`.
+* Create a .env file containing the following environmental variables:
+  - STRIPE_PUB_KEY: Used to identify your account with Stripe;
+  - STRIPE_SECRET_KEY: Standard secret key.
+  - AWS_ACCESS_KEY_ID: AWS user credentials.
+  - AWS_SECRET_ACCESS_KEY: AWS S3 credentials.
+  - DATABASE_URL: Remote PostgreSQL database link if using a remote database.
+  
+You must create accounts with both _Stripe_ and _Amazon S3_.
+  
+ * Install all requirements from the [requirements.txt](https://github.com/marcel-balint/e-commerce/blob/master/requirements.txt) file: `sudo -H pip3 -r requirements.txt`.
+ * At the terminal prompt, type `python manage.py runserver`. Django should now start running locally.
+ * Type the following commands into the terminal to create the database: `python manage.py makemigrations` and `python manage.py migrate`.
+ * To have an access to Django Admin Panel, you must generate a superuser: `python manage.py createsuperuser`.
+                                                          
+#### Remote Deployment
+
+In order to implement this project on Heroku, the following must be completed:
+ 
+ * Create a **requirements.txt** file: `pip3 freeze --local > requirements.txt`.
+ * Create a **Procfile** to tell Heroku what type of application is being deployed using gunicorn, and how to run it: `web: gunicorn ecommerce.wsgi:application`.
+ * Sign up for or log into your Heroku account, create your project app, and click the _Deploy_ tab. Select _Connect GitHub_ as the Deployment Method, and select _Enable Automatic Deployment_.
+ * In the Heroku _Settings_ tab, click on the _Reveal Config Vars_ button to configure environmental variables as in the local deployment above (You will need to copy/paste all of the .env key value pairs into the config variables).
+ * In the _Resources_ tab, go to the Add-ons section and add the _Heroku Postgres_ add-on. Choose the Hobby level when prompted. This will give you a remote database to use for your project. The database URI will be located in the _Config Vars_ in the _Settings_ tab.
+ * The app will now be deployed and built by Heroku and will be ready to run.
+ * Alter your project's _settings.py_ file to connect to the remote database using the `dj_database_url` Python package.
+ * Re-build the migrations and create a superuser to your new remote database using: 
+     - `python manage.py makemigrations`.
+     - `python manage.py migrate`.
+     - `python manage.py createsuperuser`.
+ * Sign up for a free _Amazon AWS_ account in order to host your staticfiles and media files. From the _S3_ buckets section, you'll need to create a new unique bucket.
+ * After creating your AWS S3 Bucket, you should now be able to push the static files to _AWS_ using this command: `python manage.py collectstatic`.
+ * Sign up for a free [Stripe](https://stripe.com/) account. Navigate to the **Developers** section, and click on **API Keys**. You should have two confidential keys, (_**Publishable Key**_ and _**Secret Key**_) which need to be added to your .env file, as well as your Heroku config vars.
+                                                                                     
+Your project should be completely setup and ready for remote deployment!
+
+## Credits
+#### Content
+
+The text from the _products details_ is taken from [this](https://www.asos.com/men/) website
+
+#### Media
+The images from the _products page_ is taken form [this](https://www.asos.com/men/) website.
+
+
+The home page image is taken form [this](https://www.pexels.com/) website.
+
+
+#### Acknowledgements
+
+* [Code Institute](https://codeinstitute.net/) tutors.
