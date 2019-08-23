@@ -3,7 +3,7 @@
 <form method="POST" class="register-form">
     {% csrf_token %} {{ form|crispy }}
     <div class="text-center">
-        <button type="submit" id="register-submit" class="btn btn-outline-success my-2">Submit</button>
+        <button type="submit" id="register-submit" class="btn btn-outline-success my-2">Register</button>
         <small><p>Already Have An Account? <a href="{% url 'login' %}" class="login-link">Sign In</a></p></small>
     </div>
 </form>

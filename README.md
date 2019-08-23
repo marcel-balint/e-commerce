@@ -1,6 +1,6 @@
 ## The Shopper - Ecommerce (full stack web application)
 
-A live demo can be found [here](https://easy-recipes.herokuapp.com/).
+A live demo can be found [here](https://the-shopper120.herokuapp.com/).
 
 This is a fictional ecommerce site built for Code Institute as a part of Full Stack Software Development Diploma course. Project was build with using semantic HTML5, CSS3,
 JavaScript (jQuery) along with Python framework Django 1.11.4.
@@ -22,11 +22,11 @@ Users are able to:
   - change the credit card linked his/her account.
   
 
-The wireframes for this website can be seen [here](https://github.com/marcel-balint/easy-recipes/tree/master/static/wireframes).
+The wireframes for this website can be seen [here](https://github.com/marcel-balint/e-commerce/tree/master/wireframes).
 
 ## Features
 
-- **Navbar**, located at the top of the website page, has a background color of silver(`#e8e8e8`). Contains five links:
+- **Navbar**, located at the top of the website page, has a background color of silver(`#e8e8e8`). Contains six links:
    - **Home** - links to home page: on hover, the border bottom transitions into black color;
    - **Contact** - links to a page with a form where a user can send a contact message.
    - **Products** - links to a page where a user can find all the products from which he/she can choose which to buy. Once clicked on a product, the user will be taken to a page where more details about that product are displayed, and a button to _add_ or _remove_ the product from the shopping cart.
@@ -40,3 +40,76 @@ The wireframes for this website can be seen [here](https://github.com/marcel-bal
    - **Login** - links to a page with a form where registered users can login by typing their _username_ and _password_. At the bottom of the login form there is a link which links to the _register_ page for users who do not have an account yet.
 
 - On the _home page_ there is a background image with introduction text and a button which links to the _products_ page - The aim of this section is to introduce the user to the website;
+- **Footer** - contain a link to the _Contact_ page and four social media links with a hover effect of `scale(1.3);`.
+
+
+#### Features Left to Implement
+
+- Pagination 
+
+## Technologies Used
+
+* [Cloud9 IDE](https://aws.amazon.com/cloud9/) - Used to build this project.
+* [GitHub](https://github.com/) - Used as remote storage of my code online.
+
+#### Front-End Technologies
+
+* [HTML5](https://en.wikipedia.org/wiki/HTML) - Used as the base for markup text.
+* [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) - Used as the base for cascading styles.
+* [JQuery](https://code.jquery.com/jquery/) - Used as the primary JavaScript functionality.
+* [Bootstrap](https://getbootstrap.com/) - Used as the front-end framework for layout and design.
+* [Stripe API ](https://stripe.com/docs/api?lang=python) - Used to make secured payments.
+* [Amazon AWS S3](https://aws.amazon.com/) - Used to store staticfiles and media folder and files.
+
+#### Back-End Technologies
+
+* [Python](https://www.python.org/) - Used as the back-end programming language.
+* [Django 1.11.4](https://docs.djangoproject.com/en/1.11/) -  Used as my Python web framework.
+* [Heroku](https://www.heroku.com/) - Hosts the deployed version of this project.
+* [PostgreSQL](https://www.postgresql.org/) - Used as relational SQL database plugin via Heroku.
+
+
+## Testing
+All pages have been tested on all screen sizes. This has been done via Google Chrome developer tools and by testing on my own personal phone and ipad.
+Also all features of the page are scaling as intended in tablet and mobile devices.
+
+I checked the _register_ form to see if an error occurred when entering an existing username and email, and the form validations reacts as expected..
+Also, if the _confirmation password_ does not match the _password_, it will cause an error. I made sure that the _login_ form
+will cause an error if the username and password entered are not registered in the database.
+
+I also checked to see if the number next to the cart is updated when a product is added or removed. While testing the checkout process, 
+I made sure that a new customer who does not have a payment card attached to his account will have to add a card to complete the checkout process.
+The _change card_ functionality on the _finalize checkout_ page has been tested to make sure it is working correctly and redirects back as intended.
+
+
+All links and forms are verified to be working correctly via manual testing.
+
+
+
+#### Validators
+- **HTML** 
+
+   Passing the HTML code from all templates into the [W3C Markup Validator](https://validator.w3.org/) generates numerous errors, but these are expected as the validator is unable to understand the Django template tags. 
+- **CSS**
+    
+  The CSS code passes [W3C CSS Validation Service ](https://jigsaw.w3.org/css-validator/)without errors.
+
+- **JavaScript**
+  
+  The JavaScript code passes trough [JSHint](https://jshint.com/) without errors.
+
+- **Python**
+ 
+  The Python code was passed through the [PEP8 Online validator](http://pep8online.com/) and is fully PEP8 compliant.
+   
+ The project was tested to ensure full usability across the following browsers:
+
+  * Google Chrome
+
+  * Mozilla Firefox
+
+  * Microsoft Edge
+  
+###### Chrome's DevTools Audit Report
+
+![Audit Report]()
