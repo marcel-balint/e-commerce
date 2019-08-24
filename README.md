@@ -35,7 +35,7 @@ The wireframes for this website can be seen [here](https://github.com/marcel-bal
       After that a page will be presented, where a payment card can be added and the user will be redirected to the _**finalize checkout**_ page where there is a summary of all products from the _**shopping cart:**_ the _**shipping address**_, the _**billing address**_, the _**payment method**_, the _**cart total**_, the _**shipping fee**_ and the _**order total**_ (the _**order total**_ is the sum of the _**the cart total**_ + _**shipping fee**_).
       Next to where the payment method is listed, there is a link where the user has the option to change the card. If clicked on _**checkout**_ button, located at the bottom of the summary list, the payment will be processed and a message of thanks will be displayed.
       - if logged in, the user will have to fill in the _shipping address_ and the _billing address_ then, will be redirected to the finalize checkout page where there is a summary of all products from the _**shopping cart:**_ the _**shipping address**_, the _**billing address**_, the _**payment method**_, the _**cart total**_, the _**shipping fee**_ and the _**order total**_ (the _**order total**_ is the sum of the _**cart total**_ + _**shipping fee**_). 
-      Next to where the payment method is listed, there is a link where the user has the option to change the card. If clicked on _**checkout**_ button, located at the border of the summary list, the payment will be processed and a message of thanks will be displayed.         
+      Next to where the payment method is listed, there is a link where the user has the option to change the card. If clicked on _**checkout**_ button, located at the bottom of the summary list, the payment will be processed and a message of thanks will be displayed.         
    - **Register** - links to a page with a form where users can register by typing a unique _username_, an _email address_ and a _password_ which must be confirmed. At the bottom of the register form there is a link which links to the _login_ page for users who already have an account.
    - **Login** - links to a page with a form where registered users can login by typing their _username_ and _password_. At the bottom of the login form there is a link which links to the _register_ page for users who do not have an account yet.
 
@@ -73,7 +73,7 @@ The wireframes for this website can be seen [here](https://github.com/marcel-bal
 All pages have been tested on all screen sizes. This has been done via Google Chrome developer tools and by testing on my own personal phone and ipad.
 Also all features of the page are scaling as intended in tablet and mobile devices.
 
-I checked the _register_ form to see if an error occurred when entering an existing username and email, and the form validations reacts as expected..
+I checked the _register_ form to see if an error occurred when entering an existing username or email, and the form validations reacts as expected.
 Also, if the _confirmation password_ does not match the _password_, it will cause an error. I made sure that the _login_ form
 will cause an error if the username and password entered are not registered in the database.
 
@@ -185,4 +185,4 @@ The home page image is taken form [this](https://www.pexels.com/) website.
 #### Acknowledgements
 
 * [Code Institute](https://codeinstitute.net/) tutors.
-* Stack Overflow
+* Stack Overflow.
