@@ -118,7 +118,7 @@ All links and forms are verified to be working correctly via manual testing.
 
 This project is deployed on heroku: https://the-shopper120.herokuapp.com
 
-Because Heroku cannot host static files, they have been added to my .gitignore file, they are hosted on Amazon AWS in a S3-Bucket.
+Because Heroku cannot host static files, during development, they were pushed to Amazon AWS in a S3-Bucket.
 
 #### Local Deployment
 
